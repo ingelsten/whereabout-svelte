@@ -6,8 +6,8 @@
   const whereaboutService = getContext("WhereaboutService");
 
   const mapConfig = {
-    location: {lat: 52.160858, lng: -7.152420},
-    zoom: 8,
+    location: {lat: 51.620858, lng: -8.902420},
+    zoom: 12,
     minZoom: 1,
   };
   let map = null;
@@ -16,7 +16,7 @@
     map = new LeafletMap("whereabout-map", mapConfig);
     map.showZoomControl();
     map.addLayerGroup('Whereabouts');
-    map.showLayerControl();
+      map.showLayerControl();
 
     const whereabouts = await whereaboutService.getWhereabouts();
     whereabouts.forEach(whereabout => {
@@ -29,6 +29,7 @@
     map.addMarker({lat: whereabout.lat, lng: whereabout.lng}, whereaboutStr, "Whereabouts");
     map.moveTo(11, {lat: whereabout.lat, lng: whereabout.lng});
   }
+
 </script>
 
 <div class="box" id="whereabout-map" style="height:800px"></div>

@@ -3,7 +3,26 @@ import * as L from "leaflet";
 export class LeafletMap {
   imap = {};
   control = {};
-  overlays = {};
+  overlays = {
+    Wind : L.tileLayer('http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png?appid={apiKey}', {
+      maxZoom: 19,
+      attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+      apiKey: "c5265a9e1d5bd30feb19184009892081",
+      opacity: 0.5
+    }),
+    Clouds : L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid={apiKey}', {
+      maxZoom: 19,
+      attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+      apiKey: "c5265a9e1d5bd30feb19184009892081",
+      opacity: 0.5
+    }),
+    Pressure : L.tileLayer('http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png?appid={apiKey}', {
+      maxZoom: 19,
+      attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+      apiKey: "c5265a9e1d5bd30feb19184009892081E",
+      opacity: 0.5
+    })
+  }
 
   // https://leaflet-extras.github.io/leaflet-providers/preview/
 
@@ -17,6 +36,12 @@ export class LeafletMap {
       attribution:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
     }),
+
+    CyclOSM: L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+	  maxZoom: 20,
+    attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }),
+
   };
 
   constructor(id, descriptor, activeLayer = "") {

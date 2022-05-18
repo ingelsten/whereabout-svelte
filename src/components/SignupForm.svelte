@@ -13,7 +13,7 @@
   async function signup() {
     let success = await whereaboutService.signup(firstName, lastName, email, password)
     if (success) {
-      push("/whereabout");
+      push("/");
     } else {
       errorMessage = "Error Trying to sign up";
     }

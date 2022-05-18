@@ -14,8 +14,8 @@
   let paymentMethods = ["Paypal", "Cash"];
   let selectedMethod = "";
 
-  let lat = 52.160858;
-  let lng = -7.152420;
+  let lat = 51.620358;
+  let lng = -8.905555;
 
   let message = "Please whereabout";
 
