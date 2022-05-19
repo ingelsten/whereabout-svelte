@@ -11,7 +11,7 @@
   let candidateList = [];
   let selectedCandidate = "";
 
-  let paymentMethods = ["Paypal", "Cash"];
+  let paymentMethods = ["paypal", "direct"];
   let selectedMethod = "";
 
   let lat = 51.620358;

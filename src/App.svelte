@@ -8,6 +8,7 @@
   import Whereabout from "./pages/Whereabout.svelte";
   import Map from "./pages/Map.svelte";
   import Router from "svelte-spa-router";
+  import Charts from "./pages/Charts.svelte";
 
   setContext("WhereaboutService", new WhereaboutService("http://localhost:4000"));
 
@@ -18,7 +19,9 @@
     "/whereabout": Whereabout,
     "/report": Report,
     "/map": Map,
+    "/charts": Charts,
     "/logout": Main
+
   }
 </script>
 
