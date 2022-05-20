@@ -11,11 +11,11 @@
 
 <table class="table is-fullwidth">
   <thead>
-    <th>Amount</th>
+    <th>Value of Job</th>
     <th>Method</th>
-    <th>Donor</th>
-    <th>Candidate</th>
-  </thead>
+    <th>User</th>
+    <th>Employee</th>
+     </thead>
   <tbody>
     {#each whereaboutList as whereabout}
       <tr>
@@ -31,7 +31,7 @@
         <td>
           {whereabout.donor.lastName},  {whereabout.donor.firstName}
         </td>
-      </tr>
+             </tr>
     {/each}
   </tbody>
 </table>

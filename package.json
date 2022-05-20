@@ -13,6 +13,7 @@
     "vite": "^2.9.0"
   },
   "dependencies": {
+    "@cloudinary/svelte": "^1.0.0-beta.11",
     "axios": "^0.26.1",
     "leaflet": "^1.8.0",
     "svelte-frappe-charts": "^1.9.2",
