@@ -8,8 +8,8 @@
 
   let amount = 0;
 
-  let candidateList = [];
-  let selectedCandidate = "";
+  let employeeList = [];
+  let selectedEmployee = "";
 
   let paymentMethods = ["paypal", "direct"];
   let selectedMethod = "";
@@ -20,17 +20,17 @@
   let message = "Please whereabout";
 
   onMount(async () => {
-    candidateList = await whereaboutService.getCandidates()
+    employeeList = await whereaboutService.getEmployees()
   });
 
   async function donate() {
-    if (selectedCandidate && amount && selectedMethod) {
-      const candidateNames = selectedCandidate.split(',')
-      const candidate = candidateList.find(candidate => candidate.lastName == candidateNames[0] && candidate.firstName == candidateNames[1]);
+    if (selectedEmployee && amount && selectedMethod) {
+      const employeeNames = selectedEmployee.split(',')
+      const employee = employeeList.find(employee => employee.lastName == employeeNames[0] && employee.firstName == employeeNames[1]);
       const whereabout = {
         amount: amount,
         method: selectedMethod,
-        candidate: candidate._id,
+        employee: employee._id,
         lat: lat,
         lng: lng
       };
@@ -39,12 +39,12 @@
         message = "Whereabout not completed - some error occurred";
         return;
       }
-      message = `Thanks! You donated ${amount} to ${candidate.firstName} ${candidate.lastName}`;
+      message = `Thanks! You donated ${amount} to ${employee.firstName} ${employee.lastName}`;
       dispatch("message", {
         whereabout: whereabout,
       });
     } else {
-      message = "Please select amount, method and candidate";
+      message = "Please select amount, method and employee";
     }
   }
 </script>
@@ -63,9 +63,9 @@
   </div>
   <div class="field">
     <div class="select">
-      <select bind:value={selectedCandidate}>
-        {#each candidateList as candidate}
-          <option>{candidate.lastName},{candidate.firstName}</option>
+      <select bind:value={selectedEmployee}>
+        {#each employeeList as employee}
+          <option>{employee.lastName},{employee.firstName}</option>
         {/each}
       </select>
     </div>

@@ -15,7 +15,7 @@ let totalByMethod = {
     }
   ]
 };
-let totalByCandidate = {
+let totalByEmployee = {
   labels: [],
   datasets: [
     {
@@ -32,16 +32,16 @@ onMount(async () => {
       totalByMethod.datasets[0].values[1] += whereabout.amount
     }
   });
-  let candidates = await whereaboutService.getCandidates()
-  totalByCandidate.labels = [];
-  candidates.forEach(candidate => {
-    totalByCandidate.labels.push(`${candidate.lastName}, ${candidate.firstName}`)
-    totalByCandidate.datasets[0].values.push(0);
+  let employees = await whereaboutService.getEmployees()
+  totalByEmployee.labels = [];
+  employees.forEach(employee => {
+    totalByEmployee.labels.push(`${employee.lastName}, ${employee.firstName}`)
+    totalByEmployee.datasets[0].values.push(0);
   })
-  candidates.forEach((candidate, i) => {
+  employees.forEach((employee, i) => {
     whereaboutList.forEach(whereabout => {
-      if (whereabout.candidate._id == candidate._id) {
-        totalByCandidate.datasets[0].values[i] += whereabout.amount;
+      if (whereabout.employee._id == employee._id) {
+        totalByEmployee.datasets[0].values[i] += whereabout.amount;
       }
     });
   });
@@ -63,7 +63,7 @@ onMount(async () => {
   <Chart data={totalByMethod} type="pie"/>
 </div>
 <div class="column box has-text-centered">
-  <h1 class="title is-4">By Candidate</h1>
-  <Chart data={totalByCandidate} type="bar"/>
+  <h1 class="title is-4">By Employee</h1>
+  <Chart data={totalByEmployee} type="bar"/>
 </div>
 </div>

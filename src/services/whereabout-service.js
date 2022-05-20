@@ -63,16 +63,16 @@ export class WhereaboutService {
 
   async donate(whereabout) {
     try {
-      const response = await axios.post(this.baseUrl + "/api/candidates/" + whereabout.candidate + "/whereabouts", whereabout);
+      const response = await axios.post(this.baseUrl + "/api/employees/" + whereabout.employee + "/whereabouts", whereabout);
       return response.status == 200;
     } catch (error) {
       return false;
     }
   }
 
-  async getCandidates() {
+  async getEmployees() {
     try {
-      const response = await axios.get(this.baseUrl + "/api/candidates");
+      const response = await axios.get(this.baseUrl + "/api/employees");
       return response.data;
     } catch (error) {
       return [];

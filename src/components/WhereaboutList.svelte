@@ -26,7 +26,7 @@
           {whereabout.method}
         </td>
         <td>
-          {whereabout.candidate.lastName}, {whereabout.candidate.firstName}
+          {whereabout.employee.lastName}, {whereabout.employee.firstName}
         </td>
         <td>
           {whereabout.donor.lastName},  {whereabout.donor.firstName}
