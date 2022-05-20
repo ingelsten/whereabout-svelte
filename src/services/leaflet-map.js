@@ -27,30 +27,33 @@ export class LeafletMap {
   // https://leaflet-extras.github.io/leaflet-providers/preview/
 
   baseLayers = {
+    Satellite: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+      attribution:
+        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+    }),
     Terrain: L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 17,
       attribution:
         'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
     }),
-    Satellite: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-      attribution:
-        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-    }),
-
     CyclOSM: L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
 	  maxZoom: 20,
     attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }),
+    OpenTopoMap: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	  maxZoom: 17,
+	  attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
     }),
 
   };
 
   constructor(id, descriptor, activeLayer = "") {
-    let defaultLayer = this.baseLayers.Terrain;
+    let defaultLayer = this.baseLayers.CyclOSM;
     if (activeLayer) {
       defaultLayer = this.baseLayers[activeLayer];
     }
     this.imap = L.map(id, {
-      center: [descriptor.location.lat, descriptor.location.lng],
+      center: [descriptor.location.lat, descriptor.location.long],
       zoom: descriptor.zoom,
       minZoom: descriptor.minZoom,
       zoomControl: false,
@@ -82,16 +85,16 @@ export class LeafletMap {
 
   moveTo(zoom, location) {
     this.imap.setZoom(zoom);
-    this.imap.panTo(new L.LatLng(location.lat, location.lng));
+    this.imap.panTo(new L.LatLng(location.lat, location.long));
   }
 
   zoomTo(location) {
-    this.imap.setView(new L.LatLng(location.lat, location.lng), 8);
+    this.imap.setView(new L.LatLng(location.lat, location.long), 8);
   }
 
   addMarker(location, popupText = "", layerTitle = "default") {
     let group = {};
-    let marker = L.marker([location.lat, location.lng]);
+    let marker = L.marker([location.lat, location.long]);
     if (popupText) {
       var popup = L.popup({autoClose: false, closeOnClick: false});
       popup.setContent(popupText);

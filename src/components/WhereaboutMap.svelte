@@ -6,7 +6,7 @@
   const whereaboutService = getContext("WhereaboutService");
 
   const mapConfig = {
-    location: {lat: 51.620858, lng: -8.902420},
+    location: {lat: 51.620858, long: -8.902420},
     zoom: 12,
     minZoom: 1,
   };
@@ -26,8 +26,8 @@
 
   export function addWhereaboutMarker(whereabout) {
     const whereaboutStr = `${whereabout.employee.firstName} ${whereabout.employee.lastName} €${whereabout.amount.toString()}`;
-    map.addMarker({lat: whereabout.lat, lng: whereabout.lng}, whereaboutStr, "Whereabouts");
-    map.moveTo(11, {lat: whereabout.lat, lng: whereabout.lng});
+    map.addMarker({lat: whereabout.lat, long: whereabout.long}, whereaboutStr, "Whereabouts");
+    map.moveTo(11, {lat: whereabout.lat, long: whereabout.long});
   }
 
 </script>

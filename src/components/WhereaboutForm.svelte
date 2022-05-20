@@ -15,7 +15,7 @@
   let selectedMethod = "";
 
   let lat = 51.620358;
-  let lng = -8.905555;
+  let long = -8.905555;
 
   let message = "Please whereabout";
 
@@ -32,7 +32,7 @@
         method: selectedMethod,
         employee: employee._id,
         lat: lat,
-        lng: lng
+        long: long
       };
       const success = await whereaboutService.donate(whereabout);
       if (!success) {
@@ -70,7 +70,7 @@
       </select>
     </div>
   </div>
-  <Coordinates bind:lat={lat} bind:lng={lng}/>
+  <Coordinates bind:lat={lat} bind:long={long}/>
   <div class="field">
     <div class="control">
       <button class="button is-link is-light">Whereabout</button>
