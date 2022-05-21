@@ -39,7 +39,7 @@
  </p>
  <br>
 <p class="subtitle is-5" style="text-align:center;">
-  Location and Mapping – the real-time location of field workers will in the future be viewed on a map on Whereabout’s cloud platform. 
+  Location and Mapping – the real-time location of jobs and analytics available on the Whereabout’s platform. 
      <br><br>
 <p class="subtitle is-5" style="text-align:center;">
   The location could be updated on a regular basis.

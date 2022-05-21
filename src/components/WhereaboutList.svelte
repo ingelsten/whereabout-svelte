@@ -20,7 +20,7 @@
     {#each whereaboutList as whereabout}
       <tr>
         <td>
-          {whereabout.amount}
+          {whereabout.jobvalue}
         </td>
         <td>
           {whereabout.method}

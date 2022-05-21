@@ -6,7 +6,7 @@
 
   const whereaboutService = getContext("WhereaboutService");
 
-  let amount = 0;
+  let jobvalue = 0;
 
   let employeeList = [];
   let selectedEmployee = "";
@@ -24,11 +24,11 @@
   });
 
   async function donate() {
-    if (selectedEmployee && amount && selectedMethod) {
+    if (selectedEmployee && jobvalue && selectedMethod) {
       const employeeNames = selectedEmployee.split(',')
       const employee = employeeList.find(employee => employee.lastName == employeeNames[0] && employee.firstName == employeeNames[1]);
       const whereabout = {
-        amount: amount,
+        jobvalue: jobvalue,
         method: selectedMethod,
         employee: employee._id,
         lat: lat,
@@ -39,20 +39,20 @@
         message = "Whereabout not completed - some error occurred";
         return;
       }
-      message = `Thanks! You donated ${amount} to ${employee.firstName} ${employee.lastName}`;
+      message = `Thanks! You donated ${jobvalue} to ${employee.firstName} ${employee.lastName}`;
       dispatch("message", {
         whereabout: whereabout,
       });
     } else {
-      message = "Please select amount, method and employee";
+      message = "Please select jobvalue, method and employee";
     }
   }
 </script>
 
 <form on:submit|preventDefault={donate}>
   <div class="field">
-    <label class="label" for="amount">Enter Amount</label> <input bind:value={amount} class="input" id="amount"
-                                                                  name="amount" placeholder="Euros" type="number">
+    <label class="label" for="jobvalue">Enter Amount</label> <input bind:value={jobvalue} class="input" id="jobvalue"
+                                                                  name="jobvalue" placeholder="Euros" type="number">
   </div>
   <div class="field">
     <div class="control">

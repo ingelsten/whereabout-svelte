@@ -27,9 +27,9 @@ onMount(async () => {
   let whereaboutList = await whereaboutService.getWhereabouts();
   whereaboutList.forEach(whereabout => {
     if (whereabout.method == "paypal") {
-      totalByMethod.datasets[0].values[0] += whereabout.amount
+      totalByMethod.datasets[0].values[0] += whereabout.jobvalue
     } else if (whereabout.method == "direct") {
-      totalByMethod.datasets[0].values[1] += whereabout.amount
+      totalByMethod.datasets[0].values[1] += whereabout.jobvalue
     }
   });
   let employees = await whereaboutService.getEmployees()
@@ -41,7 +41,7 @@ onMount(async () => {
   employees.forEach((employee, i) => {
     whereaboutList.forEach(whereabout => {
       if (whereabout.employee._id == employee._id) {
-        totalByEmployee.datasets[0].values[i] += whereabout.amount;
+        totalByEmployee.datasets[0].values[i] += whereabout.jobvalue;
       }
     });
   });
@@ -59,7 +59,7 @@ onMount(async () => {
 
 <div class="columns">
 <div class="column box has-text-centered">
-  <h1 class="title is-4">By Payment Method</h1>
+  <h1 class="title is-4">By Job Type</h1>
   <Chart data={totalByMethod} type="pie"/>
 </div>
 <div class="column box has-text-centered">

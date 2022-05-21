@@ -25,7 +25,7 @@
   });
 
   export function addWhereaboutMarker(whereabout) {
-    const whereaboutStr = `${whereabout.employee.firstName} ${whereabout.employee.lastName} €${whereabout.amount.toString()}`;
+    const whereaboutStr = `${whereabout.employee.firstName} ${whereabout.employee.lastName} €${whereabout.jobvalue.toString()}`;
     map.addMarker({lat: whereabout.lat, long: whereabout.long}, whereaboutStr, "Whereabouts");
     map.moveTo(11, {lat: whereabout.lat, long: whereabout.long});
   }
