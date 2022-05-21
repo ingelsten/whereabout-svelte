@@ -5,7 +5,7 @@
       </figure>
     </div>
     <div class="card-content">
-      <form action="/whereabout/{{whereabout._id}}/uploadimage" method="POST" enctype="multipart/form-data">
+      <form action="/whereabout/{{whereabout._id}}/uploadimage" jobcategory="POST" enctype="multipart/form-data">
         <div id="file-select" class="file has-name is-fullwidth">
           <label class="file-label"> <input class="file-input" name="imagefile" type="file" name="resume" accept="image/png, image/jpeg">
             <span class="file-cta">

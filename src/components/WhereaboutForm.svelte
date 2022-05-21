@@ -11,13 +11,13 @@
   let employeeList = [];
   let selectedEmployee = "";
 
-  let paymentMethods = ["paypal", "direct"];
+  let paymentMethods = ["electrical", "civils", "service"];
   let selectedMethod = "";
 
   let lat = 51.620358;
   let long = -8.905555;
 
-  let message = "Please whereabout";
+  let message = "Please add a whereabout";
 
   onMount(async () => {
     employeeList = await whereaboutService.getEmployees()
@@ -29,7 +29,7 @@
       const employee = employeeList.find(employee => employee.lastName == employeeNames[0] && employee.firstName == employeeNames[1]);
       const whereabout = {
         jobvalue: jobvalue,
-        method: selectedMethod,
+        jobcategory: selectedMethod,
         employee: employee._id,
         lat: lat,
         long: long
@@ -44,7 +44,7 @@
         whereabout: whereabout,
       });
     } else {
-      message = "Please select jobvalue, method and employee";
+      message = "Please select jobvalue, jobcategory and employee";
     }
   }
 </script>
@@ -56,8 +56,8 @@
   </div>
   <div class="field">
     <div class="control">
-      {#each paymentMethods as method}
-        <input bind:group={selectedMethod} class="radio" type="radio" value="{method}"> {method}
+      {#each paymentMethods as jobcategory}
+        <input bind:group={selectedMethod} class="radio" type="radio" value="{jobcategory}"> {jobcategory}
       {/each}
     </div>
   </div>

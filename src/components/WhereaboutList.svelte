@@ -12,9 +12,9 @@
 <table class="table is-fullwidth">
   <thead>
     <th>Value of Job</th>
-    <th>Method</th>
+    <th>Job Category</th>
+    <th>Alloacted to</th>
     <th>User</th>
-    <th>Employee</th>
      </thead>
   <tbody>
     {#each whereaboutList as whereabout}
@@ -23,7 +23,7 @@
           {whereabout.jobvalue}
         </td>
         <td>
-          {whereabout.method}
+          {whereabout.jobcategory}
         </td>
         <td>
           {whereabout.employee.lastName}, {whereabout.employee.firstName}

@@ -8,7 +8,7 @@
     const whereaboutService = getContext("WhereaboutService");
 
 let totalByMethod = {
-  labels: ["paypal", "direct"],
+  labels: ["electrical", "civils"],
   datasets: [
     {
       values: [0, 0]
@@ -26,9 +26,9 @@ let totalByEmployee = {
 onMount(async () => {
   let whereaboutList = await whereaboutService.getWhereabouts();
   whereaboutList.forEach(whereabout => {
-    if (whereabout.method == "paypal") {
+    if (whereabout.jobcategory == "electrical") {
       totalByMethod.datasets[0].values[0] += whereabout.jobvalue
-    } else if (whereabout.method == "direct") {
+    } else if (whereabout.jobcategory == "civils") {
       totalByMethod.datasets[0].values[1] += whereabout.jobvalue
     }
   });
