@@ -8,10 +8,10 @@
     const whereaboutService = getContext("WhereaboutService");
 
 let totalByMethod = {
-  labels: ["electrical", "civils"],
+  labels: ["electrical", "civils", "service"],
   datasets: [
     {
-      values: [0, 0]
+      values: [0, 0, 0]
     }
   ]
 };
@@ -28,10 +28,15 @@ onMount(async () => {
   whereaboutList.forEach(whereabout => {
     if (whereabout.jobcategory == "electrical") {
       totalByMethod.datasets[0].values[0] += whereabout.jobvalue
-    } else if (whereabout.jobcategory == "civils") {
+    } 
+  if (whereabout.jobcategory == "civils") {
       totalByMethod.datasets[0].values[1] += whereabout.jobvalue
     }
+  else if (whereabout.jobcategory == "service") {
+      totalByMethod.datasets[0].values[2] += whereabout.jobvalue
+    }
   });
+
   let employees = await whereaboutService.getEmployees()
   totalByEmployee.labels = [];
   employees.forEach(employee => {
@@ -50,7 +55,7 @@ onMount(async () => {
 
 <div class="columns is-vcentered">
 <div class="column is-two-thirds">
-  <TitleBar subTitle={"Donation Analytics"} title={"Donation Services Inc."}/>
+  <TitleBar subTitle={"Whereabout Analytics"} title={"Whereabout Services Inc."}/>
 </div>
 <div class="column">
   <MainNavigator/>
@@ -58,12 +63,22 @@ onMount(async () => {
 </div>
 
 <div class="columns">
-<div class="column box has-text-centered">
-  <h1 class="title is-4">By Job Type</h1>
+  <div class="column">
+    <div class="box">
+  <h1 class="title is-4">Value by Job Type</h1>
   <Chart data={totalByMethod} type="pie"/>
 </div>
-<div class="column box has-text-centered">
-  <h1 class="title is-4">By Employee</h1>
+</div>
+<div class="column">
+  <div class="box">
+  <h1 class="title is-4">Value by Employee</h1>
   <Chart data={totalByEmployee} type="bar"/>
+</div>
+</div>
+<div class="column">
+  <div class="box">
+  <h1 class="title is-4">Value by Employee</h1>
+  <Chart data={totalByEmployee} type="line"/>
+</div>
 </div>
 </div>

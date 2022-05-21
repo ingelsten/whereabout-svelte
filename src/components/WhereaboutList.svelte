@@ -13,8 +13,10 @@
   <thead>
     <th>Value of Job</th>
     <th>Job Category</th>
-    <th>Alloacted to</th>
-    <th>User</th>
+    <th>Allocated to</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Created by User</th>
      </thead>
   <tbody>
     {#each whereaboutList as whereabout}
@@ -24,6 +26,12 @@
         </td>
         <td>
           {whereabout.jobcategory}
+        </td>
+        <td>
+          {whereabout.lat}
+        </td>
+        <td>
+          {whereabout.long}
         </td>
         <td>
           {whereabout.employee.lastName}, {whereabout.employee.firstName}

@@ -3,6 +3,7 @@
   import TitleBar from "../components/TitleBar.svelte";
   import MainNavigator from "../components/MainNavigator.svelte";
   import WhereaboutMap from "../components/WhereaboutMap.svelte";
+  import WhereaboutList from "../components/WhereaboutList.svelte";
 
   let whereaboutMap = null;
 
@@ -27,5 +28,8 @@
   <div class="column box has-text-centered">
     <h1 class="title is-4">Please add a whereabout</h1>
     <WhereaboutForm on:message={whereaboutMade}/>
+    <h1 class="title is-4">Whereabouts</h1>
+    <WhereaboutList on:message={WhereaboutList}/>
+
   </div>
 </div>

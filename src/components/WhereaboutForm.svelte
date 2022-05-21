@@ -36,10 +36,10 @@
       };
       const success = await whereaboutService.donate(whereabout);
       if (!success) {
-        message = "Whereabout not completed - some error occurred";
+        message = "Whereabout addition not completed - some error occurred";
         return;
       }
-      message = `Thanks! You donated ${jobvalue} to ${employee.firstName} ${employee.lastName}`;
+      message = `Thanks! You have added a job with  ${jobvalue} to ${employee.firstName} ${employee.lastName}`;
       dispatch("message", {
         whereabout: whereabout,
       });
@@ -73,11 +73,8 @@
   <Coordinates bind:lat={lat} bind:long={long}/>
   <div class="field">
     <div class="control">
-      <button class="button is-link is-light">Whereabout</button>
+      <button class="button is-warning">Add a Whereabout</button>
     </div>
-  </div>
-  <div class="section">
-    {message}
   </div>
 </form>
 
