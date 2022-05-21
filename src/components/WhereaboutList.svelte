@@ -29,7 +29,7 @@
           {whereabout.employee.lastName}, {whereabout.employee.firstName}
         </td>
         <td>
-          {whereabout.donor.lastName},  {whereabout.donor.firstName}
+          {whereabout.user.lastName},  {whereabout.user.firstName}
         </td>
              </tr>
     {/each}
