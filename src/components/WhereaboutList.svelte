@@ -13,9 +13,9 @@
   <thead>
     <th>Value of Job</th>
     <th>Job Category</th>
-    <th>Allocated to</th>
     <th>Latitude</th>
     <th>Longitude</th>
+    <th>Allocated to</th>
     <th>Created by User</th>
      </thead>
   <tbody>

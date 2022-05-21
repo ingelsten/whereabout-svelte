@@ -77,7 +77,7 @@ onMount(async () => {
 </div>
 <div class="column">
   <div class="box">
-  <h1 class="title is-4">Value by Employee</h1>
+  <h1 class="title is-4">Valye By Employee</h1>
   <Chart data={totalByEmployee} type="line"/>
 </div>
 </div>

@@ -23,7 +23,7 @@
     employeeList = await whereaboutService.getEmployees()
   });
 
-  async function donate() {
+  async function addjob() {
     if (selectedEmployee && jobvalue && selectedMethod) {
       const employeeNames = selectedEmployee.split(',')
       const employee = employeeList.find(employee => employee.lastName == employeeNames[0] && employee.firstName == employeeNames[1]);
@@ -34,7 +34,7 @@
         lat: lat,
         long: long
       };
-      const success = await whereaboutService.donate(whereabout);
+      const success = await whereaboutService.addjob(whereabout);
       if (!success) {
         message = "Whereabout addition not completed - some error occurred";
         return;
@@ -49,7 +49,7 @@
   }
 </script>
 
-<form on:submit|preventDefault={donate}>
+<form on:submit|preventDefault={addjob}>
   <div class="field">
     <label class="label" for="jobvalue">Enter Amount</label> <input bind:value={jobvalue} class="input" id="jobvalue"
                                                                   name="jobvalue" placeholder="Euros" type="number">
@@ -75,6 +75,9 @@
     <div class="control">
       <button class="button is-warning">Add a Whereabout</button>
     </div>
+  </div>
+  <div class="section">
+
   </div>
 </form>
 

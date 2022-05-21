@@ -61,7 +61,7 @@ export class WhereaboutService {
     }
   }
 
-  async donate(whereabout) {
+  async addjob(whereabout) {
     try {
       const response = await axios.post(this.baseUrl + "/api/employees/" + whereabout.employee + "/whereabouts", whereabout);
       return response.status == 200;
