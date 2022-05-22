@@ -10,7 +10,7 @@
   import Router from "svelte-spa-router";
   import Charts from "./pages/Charts.svelte";
 
-  setContext("WhereaboutService", new WhereaboutService("http://localhost:4000"));
+  setContext("WhereaboutService", new WhereaboutService("https://ingelsten4.herokuapp.com"));
 
   let routes = {
     "/": Main,
