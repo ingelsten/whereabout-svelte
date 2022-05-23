@@ -11,8 +11,8 @@
   let employeeList = [];
   let selectedEmployee = "";
 
-  let paymentMethods = ["electrical", "civils", "service"];
-  let selectedMethod = "";
+  let jobCategory = ["electrical", "civils", "service"];
+  let selectedJobCategory = "";
 
   let lat = 51.620358;
   let long = -8.905555;
@@ -24,12 +24,12 @@
   });
 
   async function addjob() {
-    if (selectedEmployee && jobvalue && selectedMethod) {
+    if (selectedEmployee && jobvalue && selectedJobCategory) {
       const employeeNames = selectedEmployee.split(',')
       const employee = employeeList.find(employee => employee.lastName == employeeNames[0] && employee.firstName == employeeNames[1]);
       const whereabout = {
         jobvalue: jobvalue,
-        jobcategory: selectedMethod,
+        jobcategory: selectedJobCategory,
         employee: employee._id,
         lat: lat,
         long: long
@@ -48,36 +48,52 @@
     }
   }
 </script>
-
+<form class="box">
 <form on:submit|preventDefault={addjob}>
+
+ <!-- <div class="field">
+    <div class="control">
+      {#each jobCategory as jobcategory}
+        <input bind:group={selectedJobCategory} class="radio" type="radio" value="{jobcategory}"> {jobcategory}
+      {/each}
+    </div>
+  </div>
+-->
+
+<div class="field is-horizontal">
   <div class="field">
     <label class="label" for="jobvalue">Enter Amount</label> <input bind:value={jobvalue} class="input" id="jobvalue"
                                                                   name="jobvalue" placeholder="Euros" type="number">
   </div>
   <div class="field">
-    <div class="control">
-      {#each paymentMethods as jobcategory}
-        <input bind:group={selectedMethod} class="radio" type="radio" value="{jobcategory}"> {jobcategory}
-      {/each}
+        <label class="label" for="jobvalue">Assign Category</label>
+    <div class="select">
+      <select bind:value={selectedJobCategory}>
+        {#each jobCategory as jobcategory}
+          <option>{jobcategory}</option>
+        {/each}
+      </select>
     </div>
   </div>
   <div class="field">
+    <label class="label" for="jobvalue">Assign Employee</label>
     <div class="select">
       <select bind:value={selectedEmployee}>
         {#each employeeList as employee}
           <option>{employee.lastName},{employee.firstName}</option>
         {/each}
       </select>
-    </div>
-  </div>
-  <Coordinates bind:lat={lat} bind:long={long}/>
+        </div>
+     </div>
+</div>
   <div class="field">
-    <div class="control">
+    <label class="label" for="jobvalue">Latitude and Longitude</label>
+  <Coordinates bind:lat={lat} bind:long={long}/>
+  </div>
+  <div class="field">
       <button class="button is-warning">Add a Whereabout</button>
     </div>
-  </div>
-  <div class="section">
 
-  </div>
+</form>
 </form>
 
