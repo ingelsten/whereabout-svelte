@@ -2,7 +2,7 @@ import axios from "axios";
 import {user} from "../stores";
 
 export class WhereaboutService {
-  // baseUrl = "https://obscure-refuge-81832.herokuapp.com";
+ 
 
   constructor(baseUrl) {
     console.log("HELLO");
