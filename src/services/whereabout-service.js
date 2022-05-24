@@ -3,10 +3,11 @@ import {user} from "../stores";
 
 export class WhereaboutService {
  
+  baseUrl = "https://YOUR_DONATION_SERVICE_URL";
 
   constructor(baseUrl) {
     console.log("HELLO");
-    this.baseUrl = "http://localhost:4000";
+    this.baseUrl = baseUrl;
     console.log(this.baseUrl);
     const whereaboutCredentials = localStorage.whereabout;
     if (whereaboutCredentials) {
