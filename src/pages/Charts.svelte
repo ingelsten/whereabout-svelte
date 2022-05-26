@@ -7,7 +7,7 @@
 
     const whereaboutService = getContext("WhereaboutService");
 
-let totalByMethod = {
+let totalBYJobCategory = {
   labels: ["electrical", "civils", "service"],
   datasets: [
     {
@@ -27,13 +27,13 @@ onMount(async () => {
   let whereaboutList = await whereaboutService.getWhereabouts();
   whereaboutList.forEach(whereabout => {
     if (whereabout.jobcategory == "electrical") {
-      totalByMethod.datasets[0].values[0] += whereabout.jobvalue
+      totalBYJobCategory.datasets[0].values[0] += whereabout.jobvalue
     } 
   if (whereabout.jobcategory == "civils") {
-      totalByMethod.datasets[0].values[1] += whereabout.jobvalue
+      totalBYJobCategory.datasets[0].values[1] += whereabout.jobvalue
     }
   else if (whereabout.jobcategory == "service") {
-      totalByMethod.datasets[0].values[2] += whereabout.jobvalue
+      totalBYJobCategory.datasets[0].values[2] += whereabout.jobvalue
     }
   });
 
@@ -66,7 +66,7 @@ onMount(async () => {
   <div class="column">
     <div class="box">
   <h1 class="title is-4">Value by Job Type</h1>
-  <Chart data={totalByMethod} type="pie"/>
+  <Chart data={totalBYJobCategory} type="pie"/>
 </div>
 </div>
 <div class="column">

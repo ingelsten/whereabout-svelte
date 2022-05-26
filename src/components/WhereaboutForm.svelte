@@ -51,19 +51,10 @@
 <form class="box">
 <form on:submit|preventDefault={addjob}>
 
- <!-- <div class="field">
-    <div class="control">
-      {#each jobCategory as jobcategory}
-        <input bind:group={selectedJobCategory} class="radio" type="radio" value="{jobcategory}"> {jobcategory}
-      {/each}
-    </div>
-  </div>
--->
-
 <div class="field is-horizontal">
   <div class="field">
     <label class="label" for="jobvalue">Enter Amount</label> <input bind:value={jobvalue} class="input" id="jobvalue"
-                                                                  name="jobvalue" placeholder="Euros" type="number">
+     name="jobvalue" placeholder="Euros" type="number">
   </div>
   <div class="field">
         <label class="label" for="jobvalue">Assign Category</label>

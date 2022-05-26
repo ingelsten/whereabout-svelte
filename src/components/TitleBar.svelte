@@ -18,7 +18,7 @@
     {#if $user.email}
       <div class="is-size-7">{$user.email} </div>
     {:else}
-      <div class="is-size-7">Whereabout-Svelte 0.2</div>
+      <div class="is-size-7">Whereabout-Svelte v1.0</div>
     {/if}
   </div>
 </div>
