@@ -34,10 +34,10 @@
           {whereabout.long}
         </td>
         <td>
-          {whereabout.employee.lastName}, {whereabout.employee.firstName}
+          {whereabout.employee.firstName} {whereabout.employee.lastName}
         </td>
         <td>
-          {whereabout.user.lastName},  {whereabout.user.firstName}
+          {whereabout.user.firstName} {whereabout.user.lastName}
         </td>
              </tr>
     {/each}

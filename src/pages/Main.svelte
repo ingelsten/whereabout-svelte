@@ -51,8 +51,6 @@
 <div class="column">
 <div class="box" style="text-align:center;">
  <figure class="image is-100x100">
-<!-- svelte-ignore a11y-missing-attribute -->
-<!--<img class="is-rounded"  src="/src/assets/icons.jpg"> -->
 <img src="{icon}" width="400" alt="img"/>
  </div>
 </div>
